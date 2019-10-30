@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.vincent.hudry.generictracker.Design_main;
 import com.vincent.hudry.generictracker.R;
+import com.vincent.hudry.generictracker.activities.main.design.Design_main;
 
 class TabAdapter extends FragmentStatePagerAdapter {
 
