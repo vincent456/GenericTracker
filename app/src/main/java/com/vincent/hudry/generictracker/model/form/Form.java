@@ -1,7 +1,6 @@
 package com.vincent.hudry.generictracker.model.form;
 
 import android.app.Activity;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.vincent.hudry.generictracker.model.form.formElements.FormElement;
@@ -16,10 +15,9 @@ public class Form {
     private LinearLayout layout;
     private Activity activity;
 
-    public Form(Activity activity, FrameLayout parent) {
+    public Form(Activity activity) {
         this.activity = activity;
         layout = new LinearLayout(activity);
-        parent.addView(layout);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         layout.setLayoutParams(params);
         layout.setOrientation(LinearLayout.VERTICAL);
