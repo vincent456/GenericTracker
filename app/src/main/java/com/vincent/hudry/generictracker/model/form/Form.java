@@ -25,6 +25,7 @@ public class Form {
 
     public void addElement(FormElement element) {
         elements.add(element);
+        layout.addView(element.layout);
     }
 
     public void moveIndex(int from, int to) {

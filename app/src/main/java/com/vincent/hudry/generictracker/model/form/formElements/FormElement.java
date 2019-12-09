@@ -10,6 +10,7 @@ import com.vincent.hudry.generictracker.R;
 public class FormElement {
     private Activity activity;
 
+    public View layout;
     public FormElement(Activity activity) {
         this.activity = activity;
 
