@@ -5,6 +5,9 @@ import android.widget.LinearLayout;
 
 import com.vincent.hudry.generictracker.model.form.formElements.FormElement;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 /**
@@ -41,4 +44,18 @@ public class Form {
     public LinearLayout getLayout() {
         return layout;
     }
+
+    public JSONArray toJSON() {
+        JSONArray array = new JSONArray();
+        for (FormElement fe : elements) {
+            JSONObject object = fe.toJSON();
+            array.put(object);
+        }
+        return array;
+    }
+
+    public String toString() {
+        return toJSON().toString();
+    }
+
 }

@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.vincent.hudry.generictracker.R;
-import com.vincent.hudry.generictracker.activities.main.form_design.FormDesignActivity;
+import com.vincent.hudry.generictracker.activities.form_design.FormDesignActivity;
 import com.vincent.hudry.generictracker.model.Globals;
 import com.vincent.hudry.generictracker.model.form.Form;
 

@@ -26,28 +26,7 @@ public class ElementAddDialog {
         view = layoutInflater.inflate(R.layout.dialog_element_add, null);
         final Spinner spinner = view.findViewById(R.id.spinner);
         spinner.setAdapter(new ArrayAdapter<String>(activity, R.layout.support_simple_spinner_dropdown_item, titles));
-        /*
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String s = titles[i];
-                switch (s) {
-                    case "label":
-                        //TODO continue here
-                        Toast.makeText(activity, "label", Toast.LENGTH_SHORT).show();
-                        //form.addElement(new Label());
-                        break;
-                    default:
-                        break;
-                }
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-*/
         builder.setView(view);
 
         builder.setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {

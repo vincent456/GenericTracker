@@ -7,7 +7,10 @@ import android.widget.FrameLayout;
 
 import com.vincent.hudry.generictracker.R;
 
-public class FormElement {
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public abstract class FormElement {
     private Activity activity;
 
     public View layout;
@@ -19,5 +22,21 @@ public class FormElement {
         FrameLayout down = v.findViewById(R.id.down);
         up.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0));
         down.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0));
+    }
+
+    public abstract JSONObject toJSON();
+
+    public String toString() {
+        return toJSON().toString();
+    }
+
+    public abstract void fromJSON(JSONObject object);
+
+    public void fromString(String string) {
+        try {
+            JSONObject object = new JSONObject(string);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

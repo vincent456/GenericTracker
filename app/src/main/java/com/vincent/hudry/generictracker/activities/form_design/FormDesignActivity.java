@@ -1,4 +1,4 @@
-package com.vincent.hudry.generictracker.activities.main.form_design;
+package com.vincent.hudry.generictracker.activities.form_design;
 
 import android.os.Bundle;
 import android.view.View;
