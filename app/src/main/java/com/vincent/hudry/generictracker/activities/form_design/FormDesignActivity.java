@@ -1,5 +1,6 @@
 package com.vincent.hudry.generictracker.activities.form_design;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,5 +29,9 @@ public class FormDesignActivity extends AppCompatActivity {
     public void add_item(View view) {
         ElementAddDialog elementAddDialog = new ElementAddDialog(this, Globals.currentForm);
         elementAddDialog.that.show();
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
     }
 }

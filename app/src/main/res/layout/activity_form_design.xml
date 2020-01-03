@@ -6,46 +6,68 @@
     android:layout_height="match_parent"
     tools:context=".activities.form_design.FormDesignActivity">
 
-    <FrameLayout
-        android:id="@+id/FrameLayout"
-        android:layout_width="match_parent"
+    <ScrollView
+        android:layout_width="0dp"
+
         android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:id="@+id/FrameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="409dp"
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:id="@+id/up"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="409dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="up" />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="up" />
+
+            <Button
+                android:id="@+id/down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="down" />
+
+            <Button
+                android:id="@+id/add_element"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="add_item"
+                android:text="add" />
+
+        </LinearLayout>
 
         <Button
-            android:id="@+id/down"
-            android:layout_width="wrap_content"
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="down" />
-
-        <Button
-            android:id="@+id/add_element"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="add_item"
-            android:text="add" />
+            android:onClick="onClick"
+            android:text="@string/okay" />
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.RadioButton;
 
 import com.vincent.hudry.generictracker.R;
 
@@ -14,6 +15,7 @@ public abstract class FormElement {
     private Activity activity;
 
     public View layout;
+    public RadioButton radioButton;
     public FormElement(Activity activity) {
         this.activity = activity;
 

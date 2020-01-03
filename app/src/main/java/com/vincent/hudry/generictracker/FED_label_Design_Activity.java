@@ -29,4 +29,9 @@ public class FED_label_Design_Activity extends AppCompatActivity {
         label.setLabel(et.getText().toString());
         finish();
     }
+
+    public void delete(View view) {
+        Globals.currentForm.removeElement(label);
+        finish();
+    }
 }

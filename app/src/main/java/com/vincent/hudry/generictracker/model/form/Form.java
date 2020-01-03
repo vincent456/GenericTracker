@@ -18,6 +18,10 @@ public class Form {
     private LinearLayout layout;
     private Activity activity;
 
+    public ArrayList<FormElement> getElements() {
+        return elements;
+    }
+
     public Form(Activity activity) {
         this.activity = activity;
         layout = new LinearLayout(activity);
@@ -37,8 +41,8 @@ public class Form {
         elements.add(to, element);
     }
 
-    public void removeElement(int index) {
-        elements.remove(index);
+    public void removeElement(FormElement element) {
+        elements.remove(element);
     }
 
     public LinearLayout getLayout() {
