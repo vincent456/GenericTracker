@@ -61,6 +61,7 @@ public class Design_main extends Fragment {
                 fileCreateDialog.that.show();
             }
         });
+
         return v;
     }
 

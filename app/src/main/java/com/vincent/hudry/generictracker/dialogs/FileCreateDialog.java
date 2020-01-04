@@ -32,7 +32,7 @@ public class FileCreateDialog {
                         Globals.currentForm.name = name;
                         Globals.forms.add(Globals.currentForm);
                         Intent intent = new Intent(activity, FormDesignActivity.class);
-                        activity.startActivity(intent);
+                        activity.startActivityForResult(intent,0);
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
