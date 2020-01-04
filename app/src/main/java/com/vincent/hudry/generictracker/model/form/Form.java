@@ -17,6 +17,7 @@ public class Form {
     private ArrayList<FormElement> elements = new ArrayList<>();
     private LinearLayout layout;
     private Activity activity;
+    public String name;
 
     public ArrayList<FormElement> getElements() {
         return elements;
@@ -62,4 +63,30 @@ public class Form {
         return toJSON().toString();
     }
 
+    public void regenerateLayout() {
+        layout.removeAllViews();
+
+        layout = new LinearLayout(activity);
+        for (FormElement fe : elements) {
+            fe.regenerateLayout();
+            layout.addView(fe.layout);
+        }
+    }
+
+    public void buildIDs() {
+        int i = 1;
+        for (FormElement fe : elements) {
+            fe.id = i;
+            i++;
+        }
+    }
+
+    public FormElement getByID(int id) {
+        for (FormElement fe : elements) {
+            if (fe.id == id) {
+                return fe;
+            }
+        }
+        return null;
+    }
 }
