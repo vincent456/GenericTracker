@@ -8,6 +8,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.vincent.hudry.generictracker.FED_label_Design_Activity;
 import com.vincent.hudry.generictracker.R;
@@ -24,6 +25,34 @@ public class Label extends FormElement {
 
     public Label(final Activity activity) {
         super(activity);
+        regenerateLayout();
+    }
+
+    @Override
+    public JSONObject toJSON() {
+        JSONObject object = new JSONObject();
+        try {
+            object.put("type", "label");
+            object.put("label", label);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return object;
+    }
+
+    @Override
+    public void fromJSON(JSONObject object) {
+        String out;
+        try {
+            out = object.getString("label");
+            this.label = out;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void regenerateLayout() {
         LayoutInflater layoutInflater = activity.getLayoutInflater();
         view = layoutInflater.inflate(R.layout.fe_d_label, null);
         control = view.findViewById(R.id.control);
@@ -37,7 +66,8 @@ public class Label extends FormElement {
                 Intent intent = new Intent(activity, FED_label_Design_Activity.class);
                 Globals.currentFormElement = that;
                 radioButton.setChecked(true);
-                activity.startActivity(intent);
+                activity.startActivityForResult(intent, 0);
+                Toast.makeText(activity, "test", Toast.LENGTH_SHORT).show();
             }
         });
         super.layout = view;
@@ -56,28 +86,6 @@ public class Label extends FormElement {
                 }
             }
         });
-    }
-
-    @Override
-    public JSONObject toJSON() {
-        JSONObject object = new JSONObject();
-        try {
-            object.put("label", label);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return object;
-    }
-
-    @Override
-    public void fromJSON(JSONObject object) {
-        String out;
-        try {
-            out = object.getString("label");
-            this.label = out;
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 
     public String getLabel() {

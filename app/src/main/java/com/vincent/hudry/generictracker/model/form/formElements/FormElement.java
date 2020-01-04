@@ -12,10 +12,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public abstract class FormElement {
-    private Activity activity;
+    public int id;
 
     public View layout;
     public RadioButton radioButton;
+    protected Activity activity;
     public FormElement(Activity activity) {
         this.activity = activity;
 
@@ -41,4 +42,6 @@ public abstract class FormElement {
             e.printStackTrace();
         }
     }
+
+    public abstract void regenerateLayout();
 }
