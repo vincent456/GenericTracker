@@ -1,12 +1,12 @@
 package com.vincent.hudry.generictracker.activities.main;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.vincent.hudry.generictracker.R;
@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
                 activeTab = tab.getPosition();
             }
         });
-
     }
 
     public int getActiveTab() {
@@ -40,14 +39,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        fillDesignTab();
+    }
+
+    public void fillDesignTab() {
         //TODO response depends on active tab
         File path = getFilesDir();
         File directory = new File(path.getPath());
         File[] files = directory.listFiles();
-        for(int i=0;i < files.length;i++){
-            Log.d("Files",files[i].getName());
+        for (int i = 0; i < files.length; i++) {
+            Log.d("Files", files[i].getName());
         }
+        //if in design mode
+        RecyclerView rw = findViewById(R.id.recyclerView);
+        RWAdapter adapter = new RWAdapter(files);
+        rw.setAdapter(adapter);
     }
-
 }

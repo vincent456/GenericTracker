@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FED_label_Design_Activity" />
+        <activity android:name=".activities.FED_label_Design_Activity" />
         <activity android:name=".activities.form_design.FormDesignActivity" />
         <activity android:name=".activities.main.MainActivity">
             <intent-filter>

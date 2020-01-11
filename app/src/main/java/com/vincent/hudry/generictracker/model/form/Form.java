@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.widget.LinearLayout;
 
 import com.vincent.hudry.generictracker.model.form.formElements.FormElement;
+import com.vincent.hudry.generictracker.model.form.formElements.Label;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -25,10 +27,8 @@ public class Form {
 
     public Form(Activity activity) {
         this.activity = activity;
-        layout = new LinearLayout(activity);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-        layout.setLayoutParams(params);
-        layout.setOrientation(LinearLayout.VERTICAL);
+        this.layout = new LinearLayout(activity);
+        regenerateLayout();
     }
 
     public void addElement(FormElement element) {
@@ -59,6 +59,26 @@ public class Form {
         return array;
     }
 
+    public void fromJSON(JSONArray jsonArray) {
+        for (int i = 0; i < jsonArray.length(); i++) {
+            try {
+                JSONObject o = jsonArray.getJSONObject(i);
+                String type = o.getString("type");
+                switch (type) {
+                    case "label":
+                        Label l = new Label(activity);
+                        l.fromJSON(o);
+                        this.addElement(l);
+                        break;
+                    default:
+                        throw new IllegalStateException();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public String toString() {
         return toJSON().toString();
     }
@@ -67,6 +87,9 @@ public class Form {
         layout.removeAllViews();
 
         layout = new LinearLayout(activity);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        layout.setLayoutParams(params);
+        layout.setOrientation(LinearLayout.VERTICAL);
         for (FormElement fe : elements) {
             fe.regenerateLayout();
             layout.addView(fe.layout);

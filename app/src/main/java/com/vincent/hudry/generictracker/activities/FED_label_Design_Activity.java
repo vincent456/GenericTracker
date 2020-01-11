@@ -1,4 +1,4 @@
-package com.vincent.hudry.generictracker;
+package com.vincent.hudry.generictracker.activities;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,6 +6,7 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.vincent.hudry.generictracker.R;
 import com.vincent.hudry.generictracker.model.Globals;
 import com.vincent.hudry.generictracker.model.form.formElements.Label;
 

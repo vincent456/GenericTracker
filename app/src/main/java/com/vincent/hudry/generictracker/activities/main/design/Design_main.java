@@ -3,15 +3,21 @@ package com.vincent.hudry.generictracker.activities.main.design;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.vincent.hudry.generictracker.R;
+import com.vincent.hudry.generictracker.activities.main.RWAdapter;
 import com.vincent.hudry.generictracker.dialogs.FileCreateDialog;
+
+import java.io.File;
 
 
 /**
@@ -25,6 +31,8 @@ import com.vincent.hudry.generictracker.dialogs.FileCreateDialog;
 public class Design_main extends Fragment {
 
     private OnFragmentInteractionListener mListener;
+
+    private View v;
 
     public Design_main() {
         // Required empty public constructor
@@ -52,7 +60,7 @@ public class Design_main extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_design_main, container, false);
+        v = inflater.inflate(R.layout.fragment_design_main, container, false);
         FloatingActionButton fab = v.findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,14 +70,30 @@ public class Design_main extends Fragment {
             }
         });
 
+        fillDesignTab();
+
         return v;
     }
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+
+    public void fillDesignTab() {
+        //TODO response depends on active tab
+        File path = getActivity().getFilesDir();
+        File directory = new File(path.getPath());
+        File[] files = directory.listFiles();
+        for (int i = 0; i < files.length; i++) {
+            Log.d("Files", files[i].getName());
         }
+        //if in design mode
+        RecyclerView rw = v.findViewById(R.id.recyclerView);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        rw.setLayoutManager(linearLayoutManager);
+        RWAdapter adapter = new RWAdapter(files);
+        rw.setAdapter(adapter);
+        //TODO : have it also happen on app init
     }
+
 
     @Override
     public void onAttach(Context context) {

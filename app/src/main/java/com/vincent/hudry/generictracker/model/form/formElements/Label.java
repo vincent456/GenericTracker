@@ -8,10 +8,9 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.vincent.hudry.generictracker.FED_label_Design_Activity;
 import com.vincent.hudry.generictracker.R;
+import com.vincent.hudry.generictracker.activities.FED_label_Design_Activity;
 import com.vincent.hudry.generictracker.model.Globals;
 import com.vincent.hudry.generictracker.model.form.Form;
 
@@ -45,7 +44,7 @@ public class Label extends FormElement {
         String out;
         try {
             out = object.getString("label");
-            this.label = out;
+            this.setLabel(out);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -62,12 +61,10 @@ public class Label extends FormElement {
         control.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO continue here
                 Intent intent = new Intent(activity, FED_label_Design_Activity.class);
                 Globals.currentFormElement = that;
                 radioButton.setChecked(true);
                 activity.startActivityForResult(intent, 0);
-                Toast.makeText(activity, "test", Toast.LENGTH_SHORT).show();
             }
         });
         super.layout = view;
@@ -86,6 +83,9 @@ public class Label extends FormElement {
                 }
             }
         });
+
+        TextView tv = view.findViewById(R.id.textView2);
+        tv.setText(label);
     }
 
     public String getLabel() {
