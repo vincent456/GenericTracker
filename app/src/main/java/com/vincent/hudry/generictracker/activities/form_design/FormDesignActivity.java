@@ -2,6 +2,7 @@ package com.vincent.hudry.generictracker.activities.form_design;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -33,7 +34,8 @@ public class FormDesignActivity extends AppCompatActivity {
             //create form
             Globals.currentForm = new Form(this);
             File file = new File(intent.getStringExtra("file_name"));
-            Globals.currentForm.name = file.getName();
+            Globals.currentForm.name = file.getName().split("\\.")[0];
+            Log.d("form name", Globals.currentForm.name);
             try {
                 BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
                 StringBuilder stringBuilder = new StringBuilder();
@@ -49,8 +51,6 @@ public class FormDesignActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            //TODO : continue there
-
         }
         if (Globals.currentForm != null) {
             try {
@@ -97,5 +97,19 @@ public class FormDesignActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+    public void onDeleteClick(View view) {
+        File path = getFilesDir();
+        File directory = new File(path.getPath());
+        File[] files = directory.listFiles();
+        for (File file : files) {
+            String target = Globals.currentForm.name + ".form.json";
+            if (file.getName().equals(target)) {
+                file.delete();
+                finish();
+            }
+        }
+        finish();
     }
 }

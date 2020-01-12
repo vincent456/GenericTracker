@@ -59,7 +59,7 @@ class RWVH extends RecyclerView.ViewHolder {
             public void onClick(View view) {
                 Intent intent = new Intent(activity, FormDesignActivity.class);
                 intent.putExtra("file_name", file.getPath());
-                activity.startActivity(intent);
+                activity.startActivityForResult(intent, 0);
             }
         });
     }

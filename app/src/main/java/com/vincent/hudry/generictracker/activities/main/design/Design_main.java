@@ -3,7 +3,6 @@ package com.vincent.hudry.generictracker.activities.main.design;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,9 +80,7 @@ public class Design_main extends Fragment {
         File path = getActivity().getFilesDir();
         File directory = new File(path.getPath());
         File[] files = directory.listFiles();
-        for (int i = 0; i < files.length; i++) {
-            Log.d("Files", files[i].getName());
-        }
+
         //if in design mode
         RecyclerView rw = v.findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -91,7 +88,6 @@ public class Design_main extends Fragment {
         rw.setLayoutManager(linearLayoutManager);
         RWAdapter adapter = new RWAdapter(files);
         rw.setAdapter(adapter);
-        //TODO : have it also happen on app init
     }
 
 
