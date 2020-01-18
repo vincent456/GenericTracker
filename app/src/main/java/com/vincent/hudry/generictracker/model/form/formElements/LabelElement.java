@@ -17,12 +17,12 @@ import com.vincent.hudry.generictracker.model.form.Form;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Label extends FormElement {
+public class LabelElement extends FormElement {
     private String label;
     private ImageButton control;
     private View view;
 
-    public Label(final Activity activity) {
+    public LabelElement(final Activity activity) {
         super(activity);
         regenerateLayout();
     }
@@ -31,8 +31,8 @@ public class Label extends FormElement {
     public JSONObject toJSON() {
         JSONObject object = new JSONObject();
         try {
-            object.put("type", "label");
-            object.put("label", label);
+            object.put("type", "labelElement");
+            object.put("labelElement", label);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -43,7 +43,7 @@ public class Label extends FormElement {
     public void fromJSON(JSONObject object) {
         String out;
         try {
-            out = object.getString("label");
+            out = object.getString("labelElement");
             this.setLabel(out);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -55,7 +55,7 @@ public class Label extends FormElement {
         LayoutInflater layoutInflater = activity.getLayoutInflater();
         view = layoutInflater.inflate(R.layout.fe_d_label, null);
         control = view.findViewById(R.id.control);
-        final Label that = this;
+        final LabelElement that = this;
 
         radioButton = view.findViewById(R.id.radioButton);
         control.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +86,11 @@ public class Label extends FormElement {
 
         TextView tv = view.findViewById(R.id.textView2);
         tv.setText(label);
+    }
+
+    @Override
+    public JSONObject write() {
+        return null;
     }
 
     public String getLabel() {

@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.vincent.hudry.generictracker.R;
 import com.vincent.hudry.generictracker.activities.main.design.Design_main;
+import com.vincent.hudry.generictracker.activities.main.record.RecordMain;
 
 class TabAdapter extends FragmentStatePagerAdapter {
 
@@ -17,7 +18,7 @@ class TabAdapter extends FragmentStatePagerAdapter {
     public TabAdapter(FragmentManager fm, Activity activity) {
         super(fm);
         this.activity=activity;
-        fragments=new Fragment[]{new Design_main()};
+        fragments = new Fragment[]{new Design_main(), new RecordMain()};
     }
 
     @Override

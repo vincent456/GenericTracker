@@ -10,12 +10,13 @@ import android.widget.Spinner;
 
 import com.vincent.hudry.generictracker.R;
 import com.vincent.hudry.generictracker.model.form.Form;
-import com.vincent.hudry.generictracker.model.form.formElements.Label;
+import com.vincent.hudry.generictracker.model.form.formElements.AutoDateElement;
+import com.vincent.hudry.generictracker.model.form.formElements.LabelElement;
 
 public class ElementAddDialog {
     public AlertDialog that;
 
-    private String[] titles = new String[]{"label"};
+    private String[] titles = new String[]{"label", "AutoDate"};
 
     private View view;
 
@@ -35,20 +36,19 @@ public class ElementAddDialog {
                 String s = titles[spinner.getSelectedItemPosition()];
                 switch (s) {
                     case "label":
-                        Label label = new Label(activity);
-                        form.addElement(label);
-                        label.setLabel("dummy text");
+                        LabelElement labelElement = new LabelElement(activity);
+                        form.addElement(labelElement);
+                        labelElement.setLabel("dummy text");
+                        break;
+                    case "AutoDate":
+                        AutoDateElement autoDateElement = new AutoDateElement(activity);
+                        form.addElement(autoDateElement);
                         break;
                     default:
                         break;
                 }
             }
-        }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
-        });
+        }).setNegativeButton(R.string.cancel, null);
 
         that = builder.create();
     }

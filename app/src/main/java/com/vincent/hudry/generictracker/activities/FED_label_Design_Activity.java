@@ -8,12 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.vincent.hudry.generictracker.R;
 import com.vincent.hudry.generictracker.model.Globals;
-import com.vincent.hudry.generictracker.model.form.formElements.Label;
+import com.vincent.hudry.generictracker.model.form.formElements.LabelElement;
 
 public class FED_label_Design_Activity extends AppCompatActivity {
 
 
-    public Label label;
+    public LabelElement labelElement;
     private EditText et;
 
     @Override
@@ -21,18 +21,18 @@ public class FED_label_Design_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fed_label_design);
         assert (Globals.currentFormElement != null);
-        label = (Label) Globals.currentFormElement;
+        labelElement = (LabelElement) Globals.currentFormElement;
         et = findViewById(R.id.editText3);
-        et.setText(label.getLabel());
+        et.setText(labelElement.getLabel());
     }
 
     public void onClick(View view) {
-        label.setLabel(et.getText().toString());
+        labelElement.setLabel(et.getText().toString());
         finish();
     }
 
     public void delete(View view) {
-        Globals.currentForm.removeElement(label);
+        Globals.currentForm.removeElement(labelElement);
         finish();
     }
 }

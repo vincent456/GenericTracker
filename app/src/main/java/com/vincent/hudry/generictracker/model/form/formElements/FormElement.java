@@ -8,21 +8,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public abstract class FormElement {
-    public int id;
+    public String id;
 
     public View layout;
     public RadioButton radioButton;
     protected Activity activity;
     public FormElement(Activity activity) {
         this.activity = activity;
-
-        /*
-        View v = activity.getLayoutInflater().inflate(R.layout.layout_form_element, null);
-        FrameLayout up = v.findViewById(R.id.up);
-        FrameLayout down = v.findViewById(R.id.down);
-        up.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0));
-        down.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0));
-        */
     }
 
     public abstract JSONObject toJSON();
@@ -42,4 +34,6 @@ public abstract class FormElement {
     }
 
     public abstract void regenerateLayout();
+
+    public abstract JSONObject write();
 }

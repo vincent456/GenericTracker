@@ -46,9 +46,7 @@ public class FormDesignActivity extends AppCompatActivity {
                 s = stringBuilder.toString();
                 JSONArray jsonArray = new JSONArray(s);
                 Globals.currentForm.fromJSON(jsonArray);
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
+            } catch (IOException | JSONException e) {
                 e.printStackTrace();
             }
         }
@@ -83,6 +81,11 @@ public class FormDesignActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
+        //check form
+        if (!Globals.currentForm.check()) {
+            //error
+            return;
+        }
         //save and exit;
         String fileName = Globals.currentForm.name;
         File path = getFilesDir();
