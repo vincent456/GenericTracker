@@ -58,7 +58,7 @@ public class Design_main extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Inflate the configLayout for this fragment
         v = inflater.inflate(R.layout.fragment_design_main, container, false);
         FloatingActionButton fab = v.findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {

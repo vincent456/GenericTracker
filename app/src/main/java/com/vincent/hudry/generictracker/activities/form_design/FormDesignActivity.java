@@ -10,7 +10,6 @@ import android.widget.FrameLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.vincent.hudry.generictracker.R;
-import com.vincent.hudry.generictracker.dialogs.ElementAddDialog;
 import com.vincent.hudry.generictracker.model.Globals;
 import com.vincent.hudry.generictracker.model.form.Form;
 
@@ -52,11 +51,11 @@ public class FormDesignActivity extends AppCompatActivity {
         }
         if (Globals.currentForm != null) {
             try {
-                ((ViewGroup) Globals.currentForm.getLayout().getParent()).removeView(Globals.currentForm.getLayout());
+                ((ViewGroup) Globals.currentForm.getConfigLayout().getParent()).removeView(Globals.currentForm.getConfigLayout());
             } catch (Exception e) {
 
             }
-            ((FrameLayout) findViewById(R.id.FrameLayout)).addView(Globals.currentForm.getLayout());
+            ((FrameLayout) findViewById(R.id.FrameLayout)).addView(Globals.currentForm.getConfigLayout());
         }
     }
 
@@ -72,12 +71,12 @@ public class FormDesignActivity extends AppCompatActivity {
     void redraw() {
         FrameLayout frameLayout = findViewById(R.id.FrameLayout);
         try {
-            ((ViewGroup) Globals.currentForm.getLayout().getParent()).removeView(Globals.currentForm.getLayout());
+            ((ViewGroup) Globals.currentForm.getConfigLayout().getParent()).removeView(Globals.currentForm.getConfigLayout());
         } catch (Exception e) {
 
         }
         Globals.currentForm.regenerateLayout();
-        frameLayout.addView(Globals.currentForm.getLayout());
+        frameLayout.addView(Globals.currentForm.getConfigLayout());
     }
 
     public void onClick(View view) {
