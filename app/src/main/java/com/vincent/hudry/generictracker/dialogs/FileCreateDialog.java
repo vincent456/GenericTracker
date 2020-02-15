@@ -35,12 +35,7 @@ public class FileCreateDialog {
                         activity.startActivityForResult(intent,0);
                     }
                 })
-                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //pass
-                    }
-                })
+                .setNegativeButton(R.string.cancel, null)
                 .create();
     }
 }

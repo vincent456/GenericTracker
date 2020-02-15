@@ -2,7 +2,6 @@ package com.vincent.hudry.generictracker.activities.form_design;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -10,16 +9,11 @@ import android.widget.FrameLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.vincent.hudry.generictracker.R;
+import com.vincent.hudry.generictracker.dialogs.ElementAddDialog;
 import com.vincent.hudry.generictracker.model.Globals;
-import com.vincent.hudry.generictracker.model.form.Form;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 
 public class FormDesignActivity extends AppCompatActivity {
@@ -29,6 +23,7 @@ public class FormDesignActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_design);
         Intent intent = getIntent();
+        /*
         if (Globals.currentForm == null && intent.hasExtra("file_name")) {
             //create form
             Globals.currentForm = new Form(this);
@@ -44,18 +39,21 @@ public class FormDesignActivity extends AppCompatActivity {
                 }
                 s = stringBuilder.toString();
                 JSONArray jsonArray = new JSONArray(s);
-                Globals.currentForm.fromJSON(jsonArray);
+                Globals.currentForm.displayModel.fromJSON(jsonArray);
+                //Globals.currentForm.fromJSON(jsonArray);
             } catch (IOException | JSONException e) {
                 e.printStackTrace();
             }
         }
+
+         */
         if (Globals.currentForm != null) {
             try {
-                ((ViewGroup) Globals.currentForm.getConfigLayout().getParent()).removeView(Globals.currentForm.getConfigLayout());
+                ((ViewGroup) Globals.currentForm.displayModel.view.getParent()).removeView(Globals.currentForm.displayModel.view);
             } catch (Exception e) {
 
             }
-            ((FrameLayout) findViewById(R.id.FrameLayout)).addView(Globals.currentForm.getConfigLayout());
+            ((FrameLayout) findViewById(R.id.FrameLayout)).addView(Globals.currentForm.displayModel.view);
         }
     }
 
@@ -71,20 +69,23 @@ public class FormDesignActivity extends AppCompatActivity {
     void redraw() {
         FrameLayout frameLayout = findViewById(R.id.FrameLayout);
         try {
-            ((ViewGroup) Globals.currentForm.getConfigLayout().getParent()).removeView(Globals.currentForm.getConfigLayout());
+            ((ViewGroup) Globals.currentForm.displayModel.view.getParent()).removeView(Globals.currentForm.displayModel.view);
         } catch (Exception e) {
 
         }
-        Globals.currentForm.regenerateLayout();
-        frameLayout.addView(Globals.currentForm.getConfigLayout());
+        Globals.currentForm.displayModel.generateLayout();
+        frameLayout.addView(Globals.currentForm.displayModel.view);
     }
 
     public void onClick(View view) {
         //check form
+        /*
         if (!Globals.currentForm.check()) {
             //error
             return;
-        }
+        }*
+
+         */
         //save and exit;
         String fileName = Globals.currentForm.name;
         File path = getFilesDir();
