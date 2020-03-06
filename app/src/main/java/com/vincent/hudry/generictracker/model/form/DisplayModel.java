@@ -37,4 +37,11 @@ public class DisplayModel {
     public void fromJSON(JSONArray jsonArray) {
 
     }
+
+    public DisplayModelElement fromID(String id) {
+        for (DisplayModelElement dme : elements) {
+            if (dme.)
+        }
+        return null;
+    }
 }

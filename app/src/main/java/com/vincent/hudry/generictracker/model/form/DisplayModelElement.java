@@ -9,5 +9,7 @@ public interface DisplayModelElement {
 
     JSONObject serialize();
 
+    String getDisplayID();
+
     void deserialize(JSONObject jsonObject);
 }

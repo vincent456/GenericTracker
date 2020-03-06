@@ -13,4 +13,8 @@ public class DataModel {
     public void fromJSON(JSONArray jsonArray) {
 
     }
+
+    public DataModelElement fromID(String id) {
+        return null;
+    }
 }
