@@ -15,6 +15,11 @@ public class DataModel {
     }
 
     public DataModelElement fromID(String id) {
+        for (DataModelElement dme : elements) {
+            if (dme.getID2().equals(id)) {
+                return dme;
+            }
+        }
         return null;
     }
 }

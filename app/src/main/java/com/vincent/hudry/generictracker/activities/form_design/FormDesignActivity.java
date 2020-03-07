@@ -47,6 +47,7 @@ public class FormDesignActivity extends AppCompatActivity {
         }
 
          */
+        /*
         if (Globals.currentForm != null) {
             try {
                 ((ViewGroup) Globals.currentForm.displayModel.view.getParent()).removeView(Globals.currentForm.displayModel.view);
@@ -55,11 +56,13 @@ public class FormDesignActivity extends AppCompatActivity {
             }
             ((FrameLayout) findViewById(R.id.FrameLayout)).addView(Globals.currentForm.displayModel.view);
         }
+         */
     }
 
     public void add_item(View view) {
         ElementAddDialog elementAddDialog = new ElementAddDialog(this, Globals.currentForm);
         elementAddDialog.that.show();
+        redraw();
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

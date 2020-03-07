@@ -40,7 +40,9 @@ public class DisplayModel {
 
     public DisplayModelElement fromID(String id) {
         for (DisplayModelElement dme : elements) {
-            if (dme.)
+            if (dme.getDisplayID().equals(id)) {
+                return dme;
+            }
         }
         return null;
     }

@@ -7,8 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 
 import com.vincent.hudry.generictracker.R;
+import com.vincent.hudry.generictracker.activities.form_design.fed.fed_config_int_data_activity;
+import com.vincent.hudry.generictracker.model.Globals;
+import com.vincent.hudry.generictracker.model.form.DisplayModelElement;
 import com.vincent.hudry.generictracker.model.form.FormElement;
 
 import org.json.JSONException;
@@ -30,8 +34,24 @@ public class Int_Data extends FormElement {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(activity, );
+                Intent intent = new Intent(activity, fed_config_int_data_activity.class);
                 activity.startActivityForResult(intent, 0);
+            }
+        });
+        final RadioButton radioButton = displayView.findViewById(R.id.radioButton);
+        final Int_Data that = this;
+        radioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Globals.currentFormElement = that;
+                for (DisplayModelElement dme : Globals.currentForm.displayModel.elements) {
+                    View displayview = dme.getDisplayView();
+                    RadioButton radioButton1 = displayview.findViewById(R.id.radioButton);
+                    radioButton1.setChecked(false);
+                }
+                View displayview = that.getDisplayView();
+                RadioButton radioButton1 = displayview.findViewById(R.id.radioButton);
+                radioButton1.setChecked(true);
             }
         });
         //endregion
