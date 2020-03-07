@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.vincent.hudry.generictracker.R;
 import com.vincent.hudry.generictracker.dialogs.ElementAddDialog;
 import com.vincent.hudry.generictracker.model.Globals;
+import com.vincent.hudry.generictracker.model.form.Form;
+import com.vincent.hudry.generictracker.model.form.FormElement;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -117,5 +119,31 @@ public class FormDesignActivity extends AppCompatActivity {
             }
         }
         finish();
+    }
+
+    public void onUpClick(View view) {
+        FormElement fe = Globals.currentFormElement;
+        Form f = Globals.currentForm;
+        int index = f.displayModel.elements.indexOf(fe);
+        f.displayModel.elements.remove(index);
+        f.dataModel.elements.remove(index);
+        index--;
+        index = Math.max(index, 0);
+        f.displayModel.elements.add(index, fe);
+        f.dataModel.elements.add(index, fe);
+        f.displayModel.generateLayout();
+    }
+
+    public void onDownClick(View view) {
+        FormElement fe = Globals.currentFormElement;
+        Form f = Globals.currentForm;
+        int index = f.displayModel.elements.indexOf(fe);
+        f.displayModel.elements.remove(index);
+        f.dataModel.elements.remove(index);
+        index++;
+        index = Math.min(f.displayModel.elements.size(), index);
+        f.displayModel.elements.add(index, fe);
+        f.dataModel.elements.add(index, fe);
+        f.displayModel.generateLayout();
     }
 }
