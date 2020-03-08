@@ -32,15 +32,17 @@ public class Int_Data extends FormElement {
         //region setup displayView
         displayView = layoutInflater.inflate(R.layout.fe_di_int_data, null);
         ImageButton button = displayView.findViewById(R.id.imageButton);
+        final Int_Data that = this;
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Globals.currentFormElement = that;
                 Intent intent = new Intent(activity, fed_config_int_data_activity.class);
                 activity.startActivityForResult(intent, 0);
             }
         });
         final RadioButton radioButton = displayView.findViewById(R.id.radioButton);
-        final Int_Data that = this;
+
         radioButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

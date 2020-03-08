@@ -40,4 +40,8 @@ public class Form {
     public void fromJSON(JSONObject o) {
         //TODO : deserialize there
     }
+
+    public String toString() {
+        return toJSON().toString();
+    }
 }

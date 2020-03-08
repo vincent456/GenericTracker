@@ -123,6 +123,9 @@ public class FormDesignActivity extends AppCompatActivity {
 
     public void onUpClick(View view) {
         FormElement fe = Globals.currentFormElement;
+        if (fe == null) {
+            return;
+        }
         Form f = Globals.currentForm;
         int index = f.displayModel.elements.indexOf(fe);
         f.displayModel.elements.remove(index);
@@ -136,6 +139,9 @@ public class FormDesignActivity extends AppCompatActivity {
 
     public void onDownClick(View view) {
         FormElement fe = Globals.currentFormElement;
+        if (fe == null) {
+            return;
+        }
         Form f = Globals.currentForm;
         int index = f.displayModel.elements.indexOf(fe);
         f.displayModel.elements.remove(index);
