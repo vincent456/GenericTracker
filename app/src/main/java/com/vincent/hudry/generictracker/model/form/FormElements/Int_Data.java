@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import com.vincent.hudry.generictracker.R;
 import com.vincent.hudry.generictracker.activities.form_design.fed.fed_config_int_data_activity;
@@ -93,7 +94,10 @@ public class Int_Data extends FormElement {
 
     @Override
     public View getDisplayView() {
+        TextView tv = displayView.findViewById(R.id.textView2);
+        tv.setText(ID);
         return displayView;
+
     }
 
     @Override
@@ -116,5 +120,10 @@ public class Int_Data extends FormElement {
     @Override
     public void deserialize(JSONObject jsonObject) {
 
+    }
+
+    @Override
+    public void setID(String toString) {
+        this.ID = toString;
     }
 }

@@ -6,4 +6,6 @@ public abstract class FormElement implements DataModelElement, DisplayModelEleme
     public void setActive() {
         Globals.currentFormElement = this;
     }
+
+    public abstract void setID(String toString);
 }
