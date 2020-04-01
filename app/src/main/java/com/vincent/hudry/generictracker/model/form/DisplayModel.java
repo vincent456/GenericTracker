@@ -1,11 +1,16 @@
 package com.vincent.hudry.generictracker.model.form;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.vincent.hudry.generictracker.model.form.FormElements.FormElementFactory;
+
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -35,7 +40,23 @@ public class DisplayModel {
     }
 
     public void fromJSON(JSONArray jsonArray) {
-
+        for (int i = 0; i < jsonArray.length(); i++) {
+            try {
+                JSONObject o = jsonArray.getJSONObject(i);
+                String type = o.getString("type");
+                switch (type) {
+                    case "int":
+                        FormElement fe = FormElementFactory.instanciate(FormElementFactory.Elements.Int_Data, (Activity) this.context);
+                        fe.deserialize(o);
+                        fe.deserialize2(o);
+                        break;
+                    default:
+                        throw new IllegalStateException();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public DisplayModelElement fromID(String id) {

@@ -2,6 +2,7 @@ package com.vincent.hudry.generictracker.activities.form_design;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -25,6 +26,11 @@ public class FormDesignActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_design);
         Intent intent = getIntent();
+
+        if (Globals.currentForm == null && intent.hasExtra("file_name")) {
+            Log.d("form name", intent.getStringExtra("file name"));
+        }
+
         /*
         if (Globals.currentForm == null && intent.hasExtra("file_name")) {
             //create form

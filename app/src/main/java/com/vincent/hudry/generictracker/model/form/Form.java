@@ -38,7 +38,15 @@ public class Form {
     }
 
     public void fromJSON(JSONObject o) {
-        //TODO : deserialize there
+        try {
+            JSONArray displayModel = o.getJSONArray("displaymodel");
+            JSONArray datamodel = o.getJSONArray("datamodel");
+            this.displayModel.fromJSON(displayModel);
+            this.dataModel.fromJSON(datamodel);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public String toString() {
