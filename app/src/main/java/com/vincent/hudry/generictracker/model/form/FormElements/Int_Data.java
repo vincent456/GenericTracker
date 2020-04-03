@@ -121,7 +121,12 @@ public class Int_Data extends FormElement {
 
     @Override
     public void deserialize(JSONObject jsonObject) {
-
+        try {
+            String ID = jsonObject.getString("ID");
+            this.setID(ID);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

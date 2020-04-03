@@ -11,12 +11,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.vincent.hudry.generictracker.R;
 import com.vincent.hudry.generictracker.dialogs.ElementAddDialog;
+import com.vincent.hudry.generictracker.dialogs.FileDeleteDialog;
 import com.vincent.hudry.generictracker.model.Globals;
 import com.vincent.hudry.generictracker.model.form.Form;
 import com.vincent.hudry.generictracker.model.form.FormElement;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class FormDesignActivity extends AppCompatActivity {
@@ -28,10 +34,9 @@ public class FormDesignActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         if (Globals.currentForm == null && intent.hasExtra("file_name")) {
-            Log.d("form name", intent.getStringExtra("file name"));
+            Log.d("form name", intent.getStringExtra("file_name"));
         }
 
-        /*
         if (Globals.currentForm == null && intent.hasExtra("file_name")) {
             //create form
             Globals.currentForm = new Form(this);
@@ -46,16 +51,14 @@ public class FormDesignActivity extends AppCompatActivity {
                     stringBuilder.append(s);
                 }
                 s = stringBuilder.toString();
-                JSONArray jsonArray = new JSONArray(s);
-                Globals.currentForm.displayModel.fromJSON(jsonArray);
-                //Globals.currentForm.fromJSON(jsonArray);
+                JSONObject o = new JSONObject(s);
+                Globals.currentForm.fromJSON(o);
+                redraw();
             } catch (IOException | JSONException e) {
                 e.printStackTrace();
             }
         }
 
-         */
-        /*
         if (Globals.currentForm != null) {
             try {
                 ((ViewGroup) Globals.currentForm.displayModel.view.getParent()).removeView(Globals.currentForm.displayModel.view);
@@ -64,7 +67,7 @@ public class FormDesignActivity extends AppCompatActivity {
             }
             ((FrameLayout) findViewById(R.id.FrameLayout)).addView(Globals.currentForm.displayModel.view);
         }
-         */
+        Log.d("debug", "breaak");
     }
 
     public void add_item(View view) {
@@ -103,9 +106,14 @@ public class FormDesignActivity extends AppCompatActivity {
 
         File file = new File(path, fileName + ".form.json");
         try {
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.write(Globals.currentForm.toString());
+            fileWriter.close();
+            /*
             FileOutputStream fos = new FileOutputStream(file);
             fos.write(Globals.currentForm.toString().getBytes());
             fos.close();
+            */
             finish();
         } catch (IOException e) {
             e.printStackTrace();
@@ -114,17 +122,8 @@ public class FormDesignActivity extends AppCompatActivity {
     }
 
     public void onDeleteClick(View view) {
-        File path = getFilesDir();
-        File directory = new File(path.getPath());
-        File[] files = directory.listFiles();
-        for (File file : files) {
-            String target = Globals.currentForm.name + ".form.json";
-            if (file.getName().equals(target)) {
-                file.delete();
-                finish();
-            }
-        }
-        finish();
+        FileDeleteDialog fileDeleteDialog = new FileDeleteDialog(this);
+        fileDeleteDialog.that.show();
     }
 
     public void onUpClick(View view) {

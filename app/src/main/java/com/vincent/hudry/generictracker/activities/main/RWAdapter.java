@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.vincent.hudry.generictracker.R;
 import com.vincent.hudry.generictracker.activities.form_design.FormDesignActivity;
+import com.vincent.hudry.generictracker.model.Globals;
 
 import java.io.File;
 
@@ -57,6 +58,7 @@ class RWVH extends RecyclerView.ViewHolder {
         this.tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Globals.currentForm = null;
                 Intent intent = new Intent(activity, FormDesignActivity.class);
                 intent.putExtra("file_name", file.getPath());
                 activity.startActivityForResult(intent, 0);

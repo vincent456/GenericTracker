@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.vincent.hudry.generictracker.model.Globals;
 import com.vincent.hudry.generictracker.model.form.FormElements.FormElementFactory;
 
 import org.json.JSONArray;
@@ -48,7 +49,10 @@ public class DisplayModel {
                     case "int":
                         FormElement fe = FormElementFactory.instanciate(FormElementFactory.Elements.Int_Data, (Activity) this.context);
                         fe.deserialize(o);
+                        Globals.currentForm.displayModel.elements.add(fe);
                         fe.deserialize2(o);
+                        Globals.currentForm.dataModel.elements.add(fe);
+                        Globals.currentForm.displayModel.generateLayout();
                         break;
                     default:
                         throw new IllegalStateException();
