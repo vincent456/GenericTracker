@@ -17,14 +17,14 @@ import com.vincent.hudry.generictracker.model.Globals;
 import java.io.File;
 import java.util.ArrayList;
 
-public class RWAdapter extends RecyclerView.Adapter {
+public class RWAdapter2 extends RecyclerView.Adapter {
 
     private File[] files;
 
-    public RWAdapter(File[] files) {
+    public RWAdapter2(File[] files) {
         ArrayList<File> l = new ArrayList<>();
         for (File f : files) {
-            if (f.getName().matches(".*\\.json")) {
+            if (f.getName().matches(".*\\.csv")) {
                 l.add(f);
             }
         }
@@ -36,15 +36,13 @@ public class RWAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_item_single_text, parent, false);
-        RWVH rwvh = new RWVH(view, (Activity) parent.getContext());
-        return rwvh;
+        // RWVH2 rwvh =
+        return null;
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        RWVH rwvh = (RWVH) holder;
-        rwvh.file = files[position];
-        rwvh.tv.setText(files[position].getName());
+
     }
 
     @Override
@@ -53,13 +51,13 @@ public class RWAdapter extends RecyclerView.Adapter {
     }
 }
 
-class RWVH extends RecyclerView.ViewHolder {
+class RWVH2 extends RecyclerView.ViewHolder {
 
     private final Activity activity;
     public TextView tv;
     public File file;
 
-    public RWVH(@NonNull View itemView, final Activity activity) {
+    public RWVH2(@NonNull View itemView, final Activity activity) {
         super(itemView);
         this.tv = itemView.findViewById(R.id.textView);
         this.activity = activity;

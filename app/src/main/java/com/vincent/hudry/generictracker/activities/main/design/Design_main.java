@@ -76,7 +76,6 @@ public class Design_main extends Fragment {
 
 
     public void fillDesignTab() {
-        //TODO response depends on active tab
         File path = getActivity().getFilesDir();
         File directory = new File(path.getPath());
         File[] files = directory.listFiles();

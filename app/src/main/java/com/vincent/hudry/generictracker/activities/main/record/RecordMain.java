@@ -8,8 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.vincent.hudry.generictracker.R;
+import com.vincent.hudry.generictracker.activities.main.RWAdapter2;
+
+import java.io.File;
 
 
 /**
@@ -24,6 +29,7 @@ public class RecordMain extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    private View v;
     public RecordMain() {
         // Required empty public constructor
     }
@@ -50,7 +56,26 @@ public class RecordMain extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the configLayout for this fragment
-        return inflater.inflate(R.layout.fragment_record_main, container, false);
+
+        v = inflater.inflate(R.layout.fragment_record_main, container, false);
+
+        fillRecordTab();
+
+        return v;
+    }
+
+    private void fillRecordTab() {
+        File path = getActivity().getFilesDir();
+        File directory = new File(path.getPath());
+        File[] files = directory.listFiles();
+
+        //if in record mode
+        RecyclerView rw = v.findViewById(R.id.recyclerview);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        rw.setLayoutManager(linearLayoutManager);
+        RWAdapter2 adapter = new RWAdapter2(files);
+        rw.setAdapter(adapter);
     }
 
     public void onButtonPressed(Uri uri) {
