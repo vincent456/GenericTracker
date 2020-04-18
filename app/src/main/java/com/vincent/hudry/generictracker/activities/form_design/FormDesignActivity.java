@@ -67,7 +67,6 @@ public class FormDesignActivity extends AppCompatActivity {
             }
             ((FrameLayout) findViewById(R.id.FrameLayout)).addView(Globals.currentForm.displayModel.view);
         }
-        Log.d("debug", "breaak");
     }
 
     public void add_item(View view) {
@@ -134,11 +133,11 @@ public class FormDesignActivity extends AppCompatActivity {
         Form f = Globals.currentForm;
         int index = f.displayModel.elements.indexOf(fe);
         f.displayModel.elements.remove(index);
-        f.dataModel.elements.remove(index);
+        //f.dataModel.elements.remove(index);
         index--;
         index = Math.max(index, 0);
         f.displayModel.elements.add(index, fe);
-        f.dataModel.elements.add(index, fe);
+        //f.dataModel.elements.add(index, fe);
         f.displayModel.generateLayout();
     }
 
@@ -150,11 +149,11 @@ public class FormDesignActivity extends AppCompatActivity {
         Form f = Globals.currentForm;
         int index = f.displayModel.elements.indexOf(fe);
         f.displayModel.elements.remove(index);
-        f.dataModel.elements.remove(index);
+        //f.dataModel.elements.remove(index);
         index++;
         index = Math.min(f.displayModel.elements.size(), index);
         f.displayModel.elements.add(index, fe);
-        f.dataModel.elements.add(index, fe);
+        //f.dataModel.elements.add(index, fe);
         f.displayModel.generateLayout();
     }
 }

@@ -13,7 +13,6 @@ public class FileDeleteDialog {
     public AlertDialog that;
 
     public FileDeleteDialog(final Activity activity) {
-        //TODO: continue there
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(R.string.do_you_want_to_delete_this_form);
         builder.setNegativeButton(R.string.cancel, null);

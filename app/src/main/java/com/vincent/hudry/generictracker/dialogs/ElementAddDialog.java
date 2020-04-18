@@ -11,12 +11,13 @@ import android.widget.Spinner;
 import com.vincent.hudry.generictracker.R;
 import com.vincent.hudry.generictracker.model.Globals;
 import com.vincent.hudry.generictracker.model.form.Form;
-import com.vincent.hudry.generictracker.model.form.FormElements.Int_Data;
+import com.vincent.hudry.generictracker.model.form.FormElement;
+import com.vincent.hudry.generictracker.model.form.FormElements.FormElementFactory;
 
 public class ElementAddDialog {
     public AlertDialog that;
 
-    private String[] titles = new String[]{"int"};
+    private String[] titles = new String[]{"int", "label"};
 
     private View view;
 
@@ -34,18 +35,21 @@ public class ElementAddDialog {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 String s = titles[spinner.getSelectedItemPosition()];
+                FormElementFactory.Elements fefe;
+                if (s.equals("int"))
+                    fefe = FormElementFactory.Elements.Int_Data;
+                if (s.equals("label"))
+                    fefe = FormElementFactory.Elements.Label;
+                else
+                    throw new IllegalStateException("no such element");
+
+                FormElement fe = FormElementFactory.instanciate(fefe, activity);
+                Form currentForm = Globals.currentForm;
+                currentForm.displayModel.elements.add(fe);
+                currentForm.dataModel.elements.add(fe);
+                currentForm.displayModel.generateLayout();
+                /*
                 switch (s) {
-                    /*
-                    case "label":
-                        LabelElement labelElement = new LabelElement(activity);
-                        form.addElement(labelElement);
-                        labelElement.setLabel("dummy text");
-                        break;
-                    case "AutoDate":
-                        AutoDateElement autoDateElement = new AutoDateElement(activity);
-                        form.addElement(autoDateElement);
-                        break;
-                    */
                     case "int":
                         Int_Data int_data = new Int_Data(activity);
                         Form currentForm = Globals.currentForm;
@@ -53,9 +57,12 @@ public class ElementAddDialog {
                         currentForm.dataModel.elements.add(int_data);
                         currentForm.displayModel.generateLayout();
                         break;
+                    case "label":
+                        Label label = new Label()
                     default:
                         break;
                 }
+                 */
             }
         }).setNegativeButton(R.string.cancel, null);
 

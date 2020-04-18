@@ -45,6 +45,24 @@ public class DisplayModel {
             try {
                 JSONObject o = jsonArray.getJSONObject(i);
                 String type = o.getString("type");
+
+                switch (type) {
+                    case "int":
+                        FormElement fe = FormElementFactory.instanciate(FormElementFactory.Elements.Int_Data, (Activity) context);
+                        fe.deserialize(o);
+                        Globals.currentForm.displayModel.elements.add(fe);
+                        break;
+                    case "label":
+                        FormElement fe2 = FormElementFactory.instanciate(FormElementFactory.Elements.Label, (Activity) context);
+                        fe2.deserialize(o);
+                        Globals.currentForm.displayModel.elements.add(fe2);
+                        break;
+                    default:
+                        throw new IllegalStateException("no such element");
+                }
+                Globals.currentForm.displayModel.generateLayout();
+
+                /*
                 switch (type) {
                     case "int":
                         FormElement fe = FormElementFactory.instanciate(FormElementFactory.Elements.Int_Data, (Activity) this.context);
@@ -57,6 +75,8 @@ public class DisplayModel {
                     default:
                         throw new IllegalStateException();
                 }
+
+                */
             } catch (JSONException e) {
                 e.printStackTrace();
             }

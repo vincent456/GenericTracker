@@ -17,7 +17,7 @@ public class fed_config_int_data_activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fed_config_int_data_activity);
+        setContentView(R.layout.activity_fed_config_int_data);
         Button button = findViewById(R.id.button);
         final EditText editText = findViewById(R.id.editText);
         editText.setText(Globals.currentFormElement.getDisplayID());

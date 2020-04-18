@@ -9,11 +9,13 @@ public class FormElementFactory {
         switch (int_data) {
             case Int_Data:
                 return new Int_Data(activity);
+            case Label:
+                return new Label(activity);
             default:
                 throw new IllegalStateException();
         }
     }
 
-    public enum Elements {Int_Data}
+    public enum Elements {Int_Data, Label}
 
 }
