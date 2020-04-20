@@ -21,7 +21,6 @@ public class Fe_deleteDialog {
                         Form currentform = Globals.currentForm;
                         FormElement currentFormElement = Globals.currentFormElement;
                         currentform.displayModel.elements.remove(currentFormElement);
-                        currentform.dataModel.elements.remove(currentFormElement);
                         activity.finish();
                     }
                 })

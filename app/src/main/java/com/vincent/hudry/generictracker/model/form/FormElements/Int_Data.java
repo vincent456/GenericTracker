@@ -66,35 +66,6 @@ public class Int_Data extends FormElement {
     }
 
     @Override
-    public View getDataView() {
-        return dataView;
-    }
-
-    @Override
-    public JSONObject serialize2() {
-        //TODO : is it really necessary ? refactor later
-        EditText et = (EditText) dataView;
-        JSONObject o = new JSONObject();
-        try {
-            o.put("ID", ID);
-            o.put("type", "int");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return o;
-    }
-
-    @Override
-    public void deserialize2(JSONObject jsonObject) {
-
-    }
-
-    @Override
-    public String getID2() {
-        return ID;
-    }
-
-    @Override
     public View getDisplayView() {
         TextView tv = displayView.findViewById(R.id.textView2);
         tv.setText(ID);
