@@ -46,7 +46,6 @@ public class ElementAddDialog {
                 FormElement fe = FormElementFactory.instanciate(fefe, activity);
                 Form currentForm = Globals.currentForm;
                 currentForm.displayModel.elements.add(fe);
-                currentForm.dataModel.elements.add(fe);
                 currentForm.displayModel.generateLayout();
                 /*
                 switch (s) {

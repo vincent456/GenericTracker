@@ -80,26 +80,6 @@ public class Label extends FormElement {
     }
 
     @Override
-    public View getDataView() {
-        return dataView;
-    }
-
-    @Override
-    public JSONObject serialize2() {
-        return null;
-    }
-
-    @Override
-    public void deserialize2(JSONObject jsonObject) {
-
-    }
-
-    @Override
-    public String getID2() {
-        return ID;
-    }
-
-    @Override
     public View getDisplayView() {
         return displayView;
     }
