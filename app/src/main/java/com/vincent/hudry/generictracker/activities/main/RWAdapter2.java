@@ -36,8 +36,8 @@ public class RWAdapter2 extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_item_single_text, parent, false);
-        // RWVH2 rwvh =
-        return null;
+        RWVH2 rwvh = new RWVH2(view, (Activity) parent.getContext());
+        return rwvh;
     }
 
     @Override
