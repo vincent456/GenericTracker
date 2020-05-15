@@ -29,21 +29,20 @@ public class RecordActivity extends AppCompatActivity {
         String base = f.getName().split("\\.form\\.json")[0];
         File[] d = getFilesDir().listFiles();
         for (File f2 : d) {
-            String fn = f.getName();
-            if (fn.matches("\\.csv") && fn.matches(base)) {
+            String fn = f2.getName();
+            if (fn.contains("csv") && fn.contains(base)) {
                 Globals.record = f2;
                 return;
-            } else {
-                //create
-                File fd = new File(f.getAbsolutePath().split("\\.form\\.json")[0] + ".csv");
-                try {
-                    fd.createNewFile();
-                    create_or_check(fd.getAbsolutePath());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
-
+        }
+        //no file found
+        //create
+        File fd = new File(f.getAbsolutePath().split("\\.form\\.json")[0] + ".csv");
+        try {
+            fd.createNewFile();
+            create_or_check(fd.getAbsolutePath());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
