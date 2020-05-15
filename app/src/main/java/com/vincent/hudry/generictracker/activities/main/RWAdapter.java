@@ -29,7 +29,8 @@ public class RWAdapter extends RecyclerView.Adapter {
             }
         }
 
-        this.files = (File[]) l.toArray();
+        this.files = new File[l.size()];
+        l.toArray(this.files);
     }
 
     @NonNull
@@ -49,7 +50,7 @@ public class RWAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return files.length;
+        return files != null ? files.length : 0;
     }
 }
 

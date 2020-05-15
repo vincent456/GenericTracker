@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.vincent.hudry.generictracker.R;
-import com.vincent.hudry.generictracker.activities.form_design.FormDesignActivity;
+import com.vincent.hudry.generictracker.activities.record.RecordActivity;
 import com.vincent.hudry.generictracker.model.Globals;
 
 import java.io.File;
@@ -24,12 +24,12 @@ public class RWAdapter2 extends RecyclerView.Adapter {
     public RWAdapter2(File[] files) {
         ArrayList<File> l = new ArrayList<>();
         for (File f : files) {
-            if (f.getName().matches(".*\\.csv")) {
+            if (f.getName().matches(".*\\.json")) {
                 l.add(f);
             }
         }
-
-        this.files = (File[]) l.toArray();
+        this.files = new File[l.size()];
+        l.toArray(this.files);
     }
 
     @NonNull
@@ -42,12 +42,14 @@ public class RWAdapter2 extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
+        RWVH2 rwvh = (RWVH2) holder;
+        rwvh.file = files[position];
+        rwvh.tv.setText(files[position].getName());
     }
 
     @Override
     public int getItemCount() {
-        return files.length;
+        return files != null ? files.length : 0;
     }
 }
 
@@ -65,7 +67,7 @@ class RWVH2 extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
                 Globals.currentForm = null;
-                Intent intent = new Intent(activity, FormDesignActivity.class);
+                Intent intent = new Intent(activity, RecordActivity.class);
                 intent.putExtra("file_name", file.getPath());
                 activity.startActivityForResult(intent, 0);
             }
