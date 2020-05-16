@@ -37,7 +37,7 @@ public class RecordActivity extends AppCompatActivity {
         Globals.currentForm = new Form(this);
         String s = "";
         try {
-            FileReader fr = new FileReader(Globals.record);
+            FileReader fr = new FileReader(Globals.formFile);
             BufferedReader br = new BufferedReader(fr);
             String line;
             StringBuilder sb = new StringBuilder();
@@ -64,6 +64,7 @@ public class RecordActivity extends AppCompatActivity {
             String fn = f2.getName();
             if (fn.contains("csv") && fn.contains(base)) {
                 Globals.record = f2;
+                Globals.formFile = f;
                 return;
             }
         }

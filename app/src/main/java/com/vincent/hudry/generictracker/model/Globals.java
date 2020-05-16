@@ -14,5 +14,6 @@ public class Globals {
     public static Form currentForm = null;
     public static FormElement currentFormElement = null;
     public static File record = null;
+    public static File formFile = null;
 
 }

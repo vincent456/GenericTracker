@@ -70,7 +70,7 @@ public class RecordMain extends Fragment {
         File[] files = directory.listFiles();
 
         //if in record mode
-        RecyclerView rw = v.findViewById(R.id.recyclerview);
+        RecyclerView rw = v.findViewById(R.id.recyclerview2);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rw.setLayoutManager(linearLayoutManager);

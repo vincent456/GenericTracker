@@ -38,7 +38,7 @@ public class ElementAddDialog {
                 FormElementFactory.Elements fefe;
                 if (s.equals("int"))
                     fefe = FormElementFactory.Elements.Int_Data;
-                if (s.equals("label"))
+                else if (s.equals("label"))
                     fefe = FormElementFactory.Elements.Label;
                 else
                     throw new IllegalStateException("no such element");

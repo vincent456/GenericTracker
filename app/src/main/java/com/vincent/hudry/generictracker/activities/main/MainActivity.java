@@ -55,5 +55,9 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView rw = findViewById(R.id.recyclerView);
         RWAdapter adapter = new RWAdapter(files);
         rw.setAdapter(adapter);
+        //if in record mode
+        RecyclerView rw2 = findViewById(R.id.recyclerview2);
+        RWAdapter2 adapter2 = new RWAdapter2(files);
+        rw2.setAdapter(adapter2);
     }
 }
