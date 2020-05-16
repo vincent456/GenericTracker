@@ -2,13 +2,20 @@ package com.vincent.hudry.generictracker.activities.record;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.vincent.hudry.generictracker.R;
 import com.vincent.hudry.generictracker.model.Globals;
+import com.vincent.hudry.generictracker.model.form.Form;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 
 public class RecordActivity extends AppCompatActivity {
@@ -22,6 +29,31 @@ public class RecordActivity extends AppCompatActivity {
         String file = getIntent().getStringExtra("file_name");
         create_or_check(file);
         Log.d("fname", Globals.record.getAbsolutePath());
+        generateLayout();
+    }
+
+    private void generateLayout() {
+        LinearLayout main = findViewById(R.id.main);
+        Globals.currentForm = new Form(this);
+        String s = "";
+        try {
+            FileReader fr = new FileReader(Globals.record);
+            BufferedReader br = new BufferedReader(fr);
+            String line;
+            StringBuilder sb = new StringBuilder();
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+            s = sb.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            Globals.currentForm.fromJSON(new JSONObject(s));
+            Globals.currentForm.generateDataModel();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     private void create_or_check(String file) {

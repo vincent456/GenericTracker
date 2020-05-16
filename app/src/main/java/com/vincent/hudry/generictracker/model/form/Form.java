@@ -43,4 +43,8 @@ public class Form {
     public String toString() {
         return toJSON().toString();
     }
+
+    public void generateDataModel() {
+
+    }
 }
