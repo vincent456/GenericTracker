@@ -2,12 +2,12 @@ package com.vincent.hudry.generictracker.model.recorder.DataModelElements;
 
 import android.app.Activity;
 import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
 import com.vincent.hudry.generictracker.model.recorder.DataModelElement;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Int_Data implements DataModelElement {
@@ -30,7 +30,10 @@ public class Int_Data implements DataModelElement {
 
     @Override
     public void fromJSON(JSONObject object) {
-        Log.d("json", object.toString());
-        Log.d("break", "break");
+        try {
+            this.ID = object.getString("ID");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

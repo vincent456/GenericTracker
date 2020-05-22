@@ -47,21 +47,6 @@ public class ElementAddDialog {
                 Form currentForm = Globals.currentForm;
                 currentForm.displayModel.elements.add(fe);
                 currentForm.displayModel.generateLayout();
-                /*
-                switch (s) {
-                    case "int":
-                        Int_Data int_data = new Int_Data(activity);
-                        Form currentForm = Globals.currentForm;
-                        currentForm.displayModel.elements.add(int_data);
-                        currentForm.dataModel.elements.add(int_data);
-                        currentForm.displayModel.generateLayout();
-                        break;
-                    case "label":
-                        Label label = new Label()
-                    default:
-                        break;
-                }
-                 */
             }
         }).setNegativeButton(R.string.cancel, null);
 

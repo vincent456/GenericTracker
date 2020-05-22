@@ -71,6 +71,7 @@ public class RecordActivity extends AppCompatActivity {
 
             }
         });
+        main.addView(b);
         //endregion
     }
 
