@@ -32,7 +32,6 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
-            android:id="@+id/linearLayout"
             android:layout_width="409dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -46,7 +45,6 @@
                 android:text="up" />
 
             <Button
-                android:id="@+id/down"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -54,7 +52,6 @@
                 android:text="down" />
 
             <Button
-                android:id="@+id/add_element"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -69,7 +66,6 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -77,7 +73,6 @@
                 android:text="@string/okay" />
 
             <Button
-                android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

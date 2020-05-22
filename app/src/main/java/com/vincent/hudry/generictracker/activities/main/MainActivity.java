@@ -2,7 +2,6 @@ package com.vincent.hudry.generictracker.activities.main;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,9 +47,6 @@ public class MainActivity extends AppCompatActivity {
         File path = getFilesDir();
         File directory = new File(path.getPath());
         File[] files = directory.listFiles();
-        for (int i = 0; i < files.length; i++) {
-            Log.d("Files", files[i].getName());
-        }
         //if in design mode
         RecyclerView rw = findViewById(R.id.recyclerView);
         RWAdapter adapter = new RWAdapter(files);

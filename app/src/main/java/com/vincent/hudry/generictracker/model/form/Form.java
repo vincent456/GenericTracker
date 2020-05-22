@@ -2,7 +2,6 @@ package com.vincent.hudry.generictracker.model.form;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 
 import com.vincent.hudry.generictracker.model.Globals;
 import com.vincent.hudry.generictracker.model.recorder.DataModel;
@@ -61,7 +60,6 @@ public class Form {
             JSONArray displayModel = this.jsonform.getJSONArray("displaymodel");
             for (int i = 0; i < displayModel.length(); i++) {
                 JSONObject o = displayModel.getJSONObject(i);
-                Log.d("type", o.getString("type"));
                 switch (o.getString("type")) {
                     case "label":
                         DataModel dm = Globals.currentForm.dataModel;

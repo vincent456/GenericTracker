@@ -27,7 +27,7 @@ public class ElementAddDialog {
         LayoutInflater layoutInflater = activity.getLayoutInflater();
         view = layoutInflater.inflate(R.layout.dialog_element_add, null);
         final Spinner spinner = view.findViewById(R.id.spinner);
-        spinner.setAdapter(new ArrayAdapter<String>(activity, R.layout.support_simple_spinner_dropdown_item, titles));
+        spinner.setAdapter(new ArrayAdapter<>(activity, R.layout.support_simple_spinner_dropdown_item, titles));
 
         builder.setView(view);
 

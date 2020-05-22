@@ -1,7 +1,6 @@
 package com.vincent.hudry.generictracker.model.recorder.DataModelElements;
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -32,13 +31,11 @@ public class Label implements DataModelElement {
 
     @Override
     public void fromJSON(JSONObject object) {
-        Log.d("label data object", object.toString());
         try {
             this.ID = object.getString("ID");
             this.label = object.getString("label");
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Log.d("break", "break");
     }
 }

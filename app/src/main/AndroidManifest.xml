@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.record.RecordActivity"></activity>
+        <activity android:name=".activities.record.RecordActivity" />
         <activity android:name=".activities.form_design.fed.fed_config_label" />
         <activity android:name=".activities.form_design.fed.fed_config_int_data_activity" />
         <activity android:name=".activities.form_design.FormDesignActivity" />
