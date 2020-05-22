@@ -1,9 +1,13 @@
 package com.vincent.hudry.generictracker.model.form;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
+import com.vincent.hudry.generictracker.model.Globals;
 import com.vincent.hudry.generictracker.model.recorder.DataModel;
+import com.vincent.hudry.generictracker.model.recorder.DataModelElement;
+import com.vincent.hudry.generictracker.model.recorder.DataModelElementFactory;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,12 +56,21 @@ public class Form {
         return toJSON().toString();
     }
 
-    public void generateDataModel() {
+    public void generateDataModel(Activity activity) {
         try {
             JSONArray displayModel = this.jsonform.getJSONArray("displaymodel");
             for (int i = 0; i < displayModel.length(); i++) {
                 JSONObject o = displayModel.getJSONObject(i);
                 Log.d("type", o.getString("type"));
+                switch (o.getString("type")) {
+                    case "label":
+                        DataModel dm = Globals.currentForm.dataModel;
+                        DataModelElement dme = DataModelElementFactory.instanciate(DataModelElementFactory.Elements.LABEL, activity);
+                        dme.fromJSON(o);
+                        dm.addElement(dme);
+                    default:
+                        break;
+                }
             }
         } catch (JSONException e) {
             e.printStackTrace();

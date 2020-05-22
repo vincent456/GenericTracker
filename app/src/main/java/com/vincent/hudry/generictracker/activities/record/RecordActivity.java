@@ -2,6 +2,8 @@ package com.vincent.hudry.generictracker.activities.record;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.vincent.hudry.generictracker.R;
 import com.vincent.hudry.generictracker.model.Globals;
 import com.vincent.hudry.generictracker.model.form.Form;
+import com.vincent.hudry.generictracker.model.recorder.DataModelElement;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -50,10 +53,25 @@ public class RecordActivity extends AppCompatActivity {
         }
         try {
             Globals.currentForm.fromJSON(new JSONObject(s));
-            Globals.currentForm.generateDataModel();
+            Globals.currentForm.generateDataModel(this);
+            Log.d("break", "break");
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        //region render
+        main.removeAllViews();
+        for (DataModelElement dme : Globals.currentForm.dataModel.getElements()) {
+            main.addView(dme.getDataModelElementView());
+        }
+        Button b = new Button(this);
+        b.setText(R.string.okay);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        //endregion
     }
 
     private void create_or_check(String file) {

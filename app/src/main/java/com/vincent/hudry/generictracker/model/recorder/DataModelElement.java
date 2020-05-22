@@ -1,4 +1,11 @@
 package com.vincent.hudry.generictracker.model.recorder;
 
-interface DataModelElement {
+import android.view.View;
+
+import org.json.JSONObject;
+
+public interface DataModelElement {
+    View getDataModelElementView();
+
+    void fromJSON(JSONObject object);
 }
