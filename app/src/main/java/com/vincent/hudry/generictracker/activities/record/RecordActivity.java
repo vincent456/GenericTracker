@@ -23,8 +23,6 @@ import java.io.IOException;
 
 public class RecordActivity extends AppCompatActivity {
 
-    //TODO continue there
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +66,7 @@ public class RecordActivity extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //TODO: continnue here
             }
         });
         main.addView(b);

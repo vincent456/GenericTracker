@@ -24,7 +24,6 @@ public class fed_config_label extends AppCompatActivity {
         this.label = (Label) Globals.currentFormElement;
         Button okay = findViewById(R.id.button5);
         Button delete = findViewById(R.id.button6);
-        //TODO continue there
 
         //set fields
         ((EditText) findViewById(R.id.editText2)).setText(label.getDisplayID());
